@@ -13,7 +13,7 @@ if [[ -r $displays_conf ]]; then
   # \r in IFS: a file saved with CRLF line ends reads the same.
   while IFS=$' \t\r' read -r directive argument extra || [[ -n $directive ]]; do
     # Only plain connector names, so none needs escaping beyond its dots.
-    [[ $directive == builtin-connector && -z $extra && $argument =~ ^[A-Za-z0-9_-][A-Za-z0-9._-]*$ ]] || continue
+    [[ $directive == "builtin-connector" && -z $extra && $argument =~ ^[A-Za-z0-9_-][A-Za-z0-9._-]*$ ]] || continue
     names+=("${argument//./\\.}")
   done <"$displays_conf"
 fi
